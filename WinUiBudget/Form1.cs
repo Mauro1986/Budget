@@ -17,14 +17,13 @@ namespace WinUiBudget
         {
             InitializeComponent();
             this.BackColor = Color.Bisque;
-
         }
         private void Form1_Load(object sender, EventArgs e)
         {
             LoadWallet();
             PopulateAmountType();
             PopulateType();
-            PopulateBalance();
+            GetBalance();
         }
         private void LoadWallet()
         {
@@ -43,6 +42,7 @@ namespace WinUiBudget
             WalletRepo repo = new WalletRepo();
             repo.AddWallet(wallet);
             LoadWallet();
+            GetBalance();
         }
         private void btnUpdate_Click(object sender, EventArgs e)
         {
@@ -56,17 +56,22 @@ namespace WinUiBudget
             WalletRepo repo = new WalletRepo();
             repo.UpdateWallet(wallet);
             LoadWallet();
+            GetBalance();
         }
 
         private void grdWallets_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             lblId.Text = grdWallets.Rows[e.RowIndex].Cells[0].Value.ToString();
             txtDescription.Text = grdWallets.Rows[e.RowIndex].Cells[1].Value.ToString();
+            var minplusId = grdWallets.Rows[e.RowIndex].Cells[2].Value.ToString();
+            cmbAmountType.SelectedIndex = Convert.ToInt32(minplusId) - 1;
             txtAmount.Text = grdWallets.Rows[e.RowIndex].Cells[3].Value.ToString();
+            var typeId = grdWallets.Rows[e.RowIndex].Cells[4].Value.ToString();
+            CmbType.SelectedIndex = Convert.ToInt32(typeId) - 1;
         }
 
         private void PopulateAmountType()
-        { 
+        {
             WalletRepo repo = new WalletRepo();
             cmbAmountType.DisplayMember = "TypeAmount";
             cmbAmountType.ValueMember = "Id";
@@ -83,21 +88,6 @@ namespace WinUiBudget
             LoadWallet();
         }
 
-        private void PopulateBalance()
-        {
-            WalletRepo repo = new WalletRepo();
-            txtBalance.Text = "graag balance hier"/*repo.GetWalletBalance()*/;
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //WalletRepo repo = new WalletRepo();
-            //string value = cmbAmountType.SelectedValue.ToString();
-            //var list = repo.GetAmountTypeOfSelectedType((Convert.ToInt32(value)));
-            //listBox1.DisplayMember = "Description";
-            //listBox1.DataSource = list;
-        }
-
         private void BtnDelete_Click(object sender, EventArgs e)
         {
             Wallet wallet = new Wallet();
@@ -110,6 +100,7 @@ namespace WinUiBudget
             WalletRepo repo = new WalletRepo();
             repo.DeleteWallet(wallet.Id);
             LoadWallet();
+            GetBalance();
         }
 
         private void btnShow_Click(object sender, EventArgs e)
@@ -124,7 +115,7 @@ namespace WinUiBudget
             if (rbOutgoing.Checked)
             {
                 value = "2".ToString();
-               LoadInOut(2);
+                LoadInOut(2);
             }
             WalletRepo wallet = new WalletRepo();
             var list = wallet.GetDescriptionOfAmountType((Convert.ToInt32(value)));
@@ -135,6 +126,40 @@ namespace WinUiBudget
             WalletRepo repo = new WalletRepo();
             grdIncomeOutcome.DataSource = null;
             grdIncomeOutcome.DataSource = repo.GetWalletInOut(id);
+        }
+
+        private void GetBalance()
+        {
+            int incoming = 0;
+            int outgoing = 0;
+            int balance = 0;
+            int minPlus = 0;
+            foreach (DataGridViewRow row in grdWallets.Rows)
+            {
+                minPlus = Convert.ToInt32(row.Cells["MinPlus"].Value);
+                if (minPlus == 1)
+                {
+                incoming += Convert.ToInt32(row.Cells["Amount"].Value);
+                }
+                if (minPlus == 2)
+                {
+                    outgoing += Convert.ToInt32(row.Cells["Amount"].Value);
+                }
+            }
+            lblIncome.ForeColor = Color.Green;
+            lblIncome.Text = Convert.ToString(incoming);
+            lblOutgoing.ForeColor = Color.Red;
+            lblOutgoing.Text = Convert.ToString(outgoing);
+            balance = incoming - outgoing;
+            if (balance < 0)
+            {
+                lblBalance.ForeColor = Color.Red;
+            }
+            if (balance > 0)
+            {
+                lblBalance.ForeColor = Color.Green;
+            }
+            lblBalance.Text = Convert.ToString(balance);
         }
     }
 }

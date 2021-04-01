@@ -48,9 +48,16 @@ namespace WinUiBudget
             this.BtnDelete = new System.Windows.Forms.Button();
             this.lblId = new System.Windows.Forms.Label();
             this.grdIncomeOutcome = new System.Windows.Forms.DataGridView();
-            this.txtBalance = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblBalance = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lblIncome = new System.Windows.Forms.Label();
+            this.lblOutgoing = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.lblDate = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grdWallets)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdIncomeOutcome)).BeginInit();
             this.SuspendLayout();
@@ -59,11 +66,11 @@ namespace WinUiBudget
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.17F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(110, 9);
+            this.label1.Location = new System.Drawing.Point(58, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(588, 33);
+            this.label1.Size = new System.Drawing.Size(610, 33);
             this.label1.TabIndex = 0;
-            this.label1.Text = "--------------- My Balance App ---------------";
+            this.label1.Text = "---------------- My Balance App ----------------";
             // 
             // lblDescription
             // 
@@ -141,13 +148,15 @@ namespace WinUiBudget
             // 
             // grdWallets
             // 
-            this.grdWallets.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            this.grdWallets.AllowUserToAddRows = false;
+            this.grdWallets.AllowUserToDeleteRows = false;
+            this.grdWallets.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.grdWallets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdWallets.Location = new System.Drawing.Point(307, 96);
             this.grdWallets.Name = "grdWallets";
             this.grdWallets.RowHeadersWidth = 51;
             this.grdWallets.RowTemplate.Height = 24;
-            this.grdWallets.Size = new System.Drawing.Size(516, 238);
+            this.grdWallets.Size = new System.Drawing.Size(409, 238);
             this.grdWallets.TabIndex = 19;
             this.grdWallets.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdWallets_CellContentClick);
             // 
@@ -176,7 +185,7 @@ namespace WinUiBudget
             // btnShow
             // 
             this.btnShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnShow.Location = new System.Drawing.Point(95, 423);
+            this.btnShow.Location = new System.Drawing.Point(72, 417);
             this.btnShow.Name = "btnShow";
             this.btnShow.Size = new System.Drawing.Size(167, 32);
             this.btnShow.TabIndex = 28;
@@ -241,52 +250,133 @@ namespace WinUiBudget
             // 
             // grdIncomeOutcome
             // 
-            this.grdIncomeOutcome.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            this.grdIncomeOutcome.AllowUserToAddRows = false;
+            this.grdIncomeOutcome.AllowUserToDeleteRows = false;
+            this.grdIncomeOutcome.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.grdIncomeOutcome.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.grdIncomeOutcome.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdIncomeOutcome.Location = new System.Drawing.Point(307, 375);
             this.grdIncomeOutcome.Name = "grdIncomeOutcome";
             this.grdIncomeOutcome.RowHeadersWidth = 51;
             this.grdIncomeOutcome.RowTemplate.Height = 24;
-            this.grdIncomeOutcome.Size = new System.Drawing.Size(516, 129);
+            this.grdIncomeOutcome.Size = new System.Drawing.Size(409, 129);
             this.grdIncomeOutcome.TabIndex = 34;
-            // 
-            // txtBalance
-            // 
-            this.txtBalance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBalance.Location = new System.Drawing.Point(95, 480);
-            this.txtBalance.Name = "txtBalance";
-            this.txtBalance.Size = new System.Drawing.Size(167, 24);
-            this.txtBalance.TabIndex = 35;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.15F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(407, 63);
+            this.label2.Location = new System.Drawing.Point(302, 63);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(283, 30);
+            this.label2.Size = new System.Drawing.Size(296, 30);
             this.label2.TabIndex = 36;
-            this.label2.Text = "All Incoming/Outgoing";
+            this.label2.Text = "Incoming and Outgoing";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.15F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(407, 342);
+            this.label3.Location = new System.Drawing.Point(302, 342);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(276, 30);
             this.label3.TabIndex = 37;
             this.label3.Text = "Incoming or Outgoing";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(57, 473);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(193, 31);
+            this.label4.TabIndex = 39;
+            this.label4.Text = "Total Balance";
+            // 
+            // lblBalance
+            // 
+            this.lblBalance.AutoSize = true;
+            this.lblBalance.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBalance.Location = new System.Drawing.Point(108, 507);
+            this.lblBalance.Name = "lblBalance";
+            this.lblBalance.Size = new System.Drawing.Size(105, 48);
+            this.lblBalance.TabIndex = 40;
+            this.lblBalance.Text = "0,00";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(59, 523);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(25, 25);
+            this.label5.TabIndex = 42;
+            this.label5.Text = "€";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(260, 520);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(28, 29);
+            this.label6.TabIndex = 43;
+            this.label6.Text = "=";
+            // 
+            // lblIncome
+            // 
+            this.lblIncome.AutoSize = true;
+            this.lblIncome.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIncome.Location = new System.Drawing.Point(330, 514);
+            this.lblIncome.Name = "lblIncome";
+            this.lblIncome.Size = new System.Drawing.Size(78, 36);
+            this.lblIncome.TabIndex = 44;
+            this.lblIncome.Text = "0,00";
+            // 
+            // lblOutgoing
+            // 
+            this.lblOutgoing.AutoSize = true;
+            this.lblOutgoing.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOutgoing.Location = new System.Drawing.Point(482, 514);
+            this.lblOutgoing.Name = "lblOutgoing";
+            this.lblOutgoing.Size = new System.Drawing.Size(78, 36);
+            this.lblOutgoing.TabIndex = 45;
+            this.lblOutgoing.Text = "0,00";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(438, 514);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(22, 29);
+            this.label9.TabIndex = 46;
+            this.label9.Text = "-";
+            // 
+            // lblDate
+            // 
+            this.lblDate.AutoSize = true;
+            this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDate.Location = new System.Drawing.Point(774, 298);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(80, 36);
+            this.lblDate.TabIndex = 47;
+            this.lblDate.Text = "Date";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(846, 521);
+            this.ClientSize = new System.Drawing.Size(910, 568);
+            this.Controls.Add(this.lblDate);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.lblOutgoing);
+            this.Controls.Add(this.lblIncome);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.lblBalance);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtBalance);
             this.Controls.Add(this.grdIncomeOutcome);
             this.Controls.Add(this.lblId);
             this.Controls.Add(this.BtnDelete);
@@ -337,9 +427,16 @@ namespace WinUiBudget
         private System.Windows.Forms.Button BtnDelete;
         private System.Windows.Forms.Label lblId;
         private System.Windows.Forms.DataGridView grdIncomeOutcome;
-        private System.Windows.Forms.TextBox txtBalance;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblBalance;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblIncome;
+        private System.Windows.Forms.Label lblOutgoing;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lblDate;
     }
 }
 
